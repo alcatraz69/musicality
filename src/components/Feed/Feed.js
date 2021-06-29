@@ -1,7 +1,17 @@
 import "./Feed.css";
-
+import CreatePost from "../CreatePost/CreatePost";
+import Post from "../Post/Post";
 const Feed = () => {
-  return <div className="feed">Feed</div>;
+  return (
+    <div className="feed">
+      <CreatePost />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+    </div>
+  );
 };
 
 export default Feed;
