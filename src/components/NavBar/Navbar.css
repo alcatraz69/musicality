@@ -1,10 +1,10 @@
 .navbarContainer {
-  height: 70px;
+  height: 55px;
   width: 100%;
   background-color: #fff;
   display: flex;
   align-items: center;
-  position: fixed;
+  position: sticky;
   top: 0;
   border-bottom: 1px solid rgb(199, 199, 199);
 }
@@ -19,6 +19,8 @@
   font-weight: 600;
   color: rgb(16, 9, 75);
   cursor: pointer;
+  display: flex;
+  align-items: center;
 }
 
 .navbarCenter {
@@ -27,8 +29,8 @@
 
 .searchBar {
   width: 60%;
-  height: 45px;
-  background-color: rgb(230, 230, 230);
+  height: 38px;
+  background-color: #f0f2f5;
   border-radius: 10px;
   display: flex;
   align-items: center;
@@ -42,7 +44,7 @@
 .searchInput {
   border: none;
   width: 70%;
-  background-color: rgb(230, 230, 230);
+  background-color: #f0f2f5;
 }
 
 .searchInput:focus {
@@ -58,7 +60,7 @@
 
 .rightIcon {
   color: rgb(211, 211, 211);
-  font-size: 24px;
+  font-size: 26px;
 }
 
 .rightIcon:hover {
@@ -72,7 +74,7 @@
 .iconBadge {
   width: 15px;
   height: 15px;
-  background-color: red;
+  background-color: #f02849;
   border-radius: 50%;
   color: #fff;
   position: absolute;
@@ -81,10 +83,10 @@
   align-items: center;
   top: -5px;
   right: -7px;
-  font-size: 12px;
+  font-size: 11px;
 }
 
-.navImage {
+.userImage {
   width: 34px;
   height: 34px;
   border-radius: 8px;

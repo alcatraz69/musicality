@@ -29,7 +29,7 @@ const Navbar = () => {
           <span className="iconBadge">2</span>
         </div>
 
-        <img src="/Asset/user/4.jpeg" alt="" className="navImage" />
+        <img src="/Asset/user/4.jpeg" alt="" className="userImage" />
       </div>
     </div>
   );

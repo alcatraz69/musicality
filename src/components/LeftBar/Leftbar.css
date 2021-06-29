@@ -1,0 +1,74 @@
+.leftbar {
+  flex: 2.8;
+  padding: 30px;
+  height: calc(100vh - 55px);
+  overflow-y: scroll;
+}
+
+.usercard {
+  display: flex;
+  align-items: center;
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 25px;
+}
+
+.userImageSide {
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.userDetails {
+  margin-left: 20px;
+}
+
+.name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.username {
+  font-size: 12px;
+}
+
+.leftbarListContainer {
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 0 50px;
+  margin-top: 28px;
+}
+
+.leftbarList {
+  list-style: none;
+  padding: 0;
+}
+
+.leftbarListitem {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 16px 0;
+  border-bottom: 1px solid rgb(218, 218, 218);
+}
+
+.leftbarListitem:nth-child(6) {
+  border-bottom: none;
+}
+
+.itemIcon {
+  margin-right: 20px;
+  font-size: 24px;
+}
+
+.adContainer {
+  border-radius: 12px;
+  background-color: #fff;
+  padding: 25px;
+  margin-top: 28px;
+}
+
+.adImg {
+  width: 100%;
+  border-radius: 12px;
+}
