@@ -1,10 +1,9 @@
 .createPostContainer {
   width: 100%;
-  height: 120px;
+  height: 155px;
   border-radius: 10px;
-  /* box-shadow: 20px 20px 60px #bebebe, -20px -20px 60px #ffffff; */
-  padding: 20px;
   background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .userIcon {
@@ -18,7 +17,8 @@
 .createPostTop {
   display: flex;
   align-items: center;
-  margin: 0 20px;
+  margin: 0 20px 20px 20px;
+  padding-top: 20px;
 }
 
 .createPostInput {

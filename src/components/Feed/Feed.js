@@ -6,10 +6,6 @@ const Feed = () => {
     <div className="feed">
       <CreatePost />
       <Post />
-      <Post />
-      <Post />
-      <Post />
-      <Post />
     </div>
   );
 };

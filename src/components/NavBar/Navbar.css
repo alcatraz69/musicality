@@ -6,7 +6,8 @@
   align-items: center;
   position: sticky;
   top: 0;
-  border-bottom: 1px solid rgb(199, 199, 199);
+  z-index: 999;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
 }
 
 .navbarLeft {
@@ -45,6 +46,7 @@
   border: none;
   width: 70%;
   background-color: #f0f2f5;
+  font-size: 15px;
 }
 
 .searchInput:focus {
@@ -61,6 +63,7 @@
 .rightIcon {
   color: rgb(211, 211, 211);
   font-size: 26px;
+  cursor: pointer;
 }
 
 .rightIcon:hover {
@@ -91,4 +94,5 @@
   height: 34px;
   border-radius: 8px;
   object-fit: cover;
+  cursor: pointer;
 }

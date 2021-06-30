@@ -1,8 +1,10 @@
 .leftbar {
   flex: 2.8;
-  padding: 30px;
-  height: calc(100vh - 55px);
+  padding: 24px 30px;
+  height: calc(100vh - 100px);
   overflow-y: scroll;
+  position: sticky;
+  top: 56px;
 }
 
 .usercard {
@@ -11,6 +13,7 @@
   border-radius: 12px;
   background-color: #fff;
   padding: 25px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .userImageSide {
@@ -37,7 +40,8 @@
   border-radius: 12px;
   background-color: #fff;
   padding: 0 50px;
-  margin-top: 28px;
+  margin-top: 22px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .leftbarList {
@@ -65,11 +69,12 @@
 .adContainer {
   border-radius: 12px;
   background-color: #fff;
-  padding: 25px;
-  margin-top: 28px;
+  padding: 23px;
+  margin-top: 22px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .adImg {
   width: 100%;
-  border-radius: 12px;
+  border-radius: 10px;
 }

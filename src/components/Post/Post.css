@@ -1,9 +1,10 @@
 .postContainer {
-  width: 106%;
+  width: 100%;
   margin: 30px 0;
   background-color: #fff;
   border-radius: 10px;
   padding: 20px 0;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
 .postProfileImg {
@@ -47,7 +48,7 @@
 .postImg {
   width: 100%;
   margin-top: 20px;
-  max-width: 650px;
+  max-width: 700px;
   object-fit: contain;
 }
 

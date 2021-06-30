@@ -1,4 +1,94 @@
 .rightbar {
   flex: 3.5;
-  padding: 50px;
+  padding: 24px 30px;
+}
+
+.birthdayContainer {
+  padding: 20px 20px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.bdayImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.bdayText {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.sponserContainer {
+  text-decoration: none;
+  color: black;
+  background-color: #fff;
+  padding: 30px 30px 10px 30px;
+  display: block;
+  border-radius: 10px;
+  margin-top: 30px;
+  width: 70%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sponserImg {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.sponserTxtContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sponserLink {
+  margin: 2px 10px;
+  color: grey;
+  font-size: 13px;
+}
+
+.friendlistTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.friendsTitle {
+  margin: 20px 0;
+}
+
+.friendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.friendItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.friendProfileImgContainer {
+  margin-right: 10px;
+  position: relative;
+}
+
+.onlineStatus {
+  width: 12px;
+  height: 12px;
+  background-color: limegreen;
+  border-radius: 50%;
+  position: absolute;
+  top: -2;
+  right: 0;
+  border: 2px solid white;
+}
+
+.friendUserName {
+  font-size: 15px;
 }

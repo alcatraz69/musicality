@@ -47,7 +47,11 @@ const Leftbar = () => {
       </div>
 
       <div className="adContainer">
-        <img src="/Asset/ad.png" alt="" className="adImg" />
+        <img src="/Asset/ad1.jpg" alt="" className="adImg" />
+      </div>
+
+      <div className="adContainer">
+        <img src="/Asset/ad1.jpg" alt="" className="adImg" />
       </div>
     </div>
   );
