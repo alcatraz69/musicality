@@ -3,15 +3,18 @@ import { BiSearchAlt2 } from "react-icons/bi";
 import { BsFillPersonPlusFill } from "react-icons/bs";
 import { IoMdChatboxes } from "react-icons/io";
 import { GiMusicSpell } from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
     <div className="navbarContainer">
       <div className="navbarLeft">
-        <span className="logo">
-          <GiMusicSpell />
-          Musicality
-        </span>
+        <Link to="/" style={{ textDecoration: "none" }}>
+          <span className="logo">
+            <GiMusicSpell />
+            Musicality
+          </span>
+        </Link>
       </div>
       <div className="navbarCenter">
         <div className="searchBar">

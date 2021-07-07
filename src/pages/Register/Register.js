@@ -1,6 +1,46 @@
 import "./Register.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { registerAsync } from "../../features/auth/auth.service";
 
 const Register = () => {
+  const dispatch = useDispatch();
+  const [userData, setUserData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    cpassword: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const { name, email, password, cpassword } = userData;
+    try {
+      let user = await dispatch(
+        registerAsync({
+          name,
+          email,
+          password,
+          cpassword,
+        })
+      );
+
+      console.log(user);
+      console.log(user.payload);
+
+      if (user.status === 200) {
+        // history.push("/");
+        console.log("register success");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -12,14 +52,47 @@ const Register = () => {
           </span>
         </div>
         <div className="loginRight">
-          <div className="registerBox">
-            <input placeholder="Username" className="loginInput" />
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <input placeholder="Password Again" className="loginInput" />
-            <button className="loginButton">Sign Up</button>
+          <form className="registerBox" onSubmit={handleClick}>
+            <input
+              placeholder="Username"
+              name="name"
+              required
+              className="loginInput"
+              value={userData.name}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="Email"
+              name="email"
+              required
+              type="email"
+              className="loginInput"
+              value={userData.email}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="Password"
+              name="password"
+              required
+              minLength="6"
+              className="loginInput"
+              value={userData.password}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="Password Again"
+              name="cpassword"
+              required
+              minLength="6"
+              className="loginInput"
+              value={userData.cpassword}
+              onChange={handleChange}
+            />
+            <button type="submit" className="loginButton">
+              Sign Up
+            </button>
             <button className="loginRegisterButton">Log into Account</button>
-          </div>
+          </form>
         </div>
       </div>
     </div>

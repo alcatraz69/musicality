@@ -1,6 +1,42 @@
 import "./Login.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { loginAsync } from "../../features/auth/auth.service";
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const [userData, setUserData] = useState({
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    const { email, password } = userData;
+    try {
+      let user = await dispatch(
+        loginAsync({
+          email,
+          password,
+        })
+      );
+
+      console.log(user);
+      console.log(user.payload);
+
+      if (user.status === 200) {
+        // history.push("/");
+        console.log("login success");
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -12,15 +48,33 @@ const Login = () => {
           </span>
         </div>
         <div className="loginRight">
-          <div className="loginBox">
-            <input placeholder="Email" className="loginInput" />
-            <input placeholder="Password" className="loginInput" />
-            <button className="loginButton">Log In</button>
+          <form className="loginBox" onSubmit={handleClick}>
+            <input
+              placeholder="Email"
+              name="email"
+              required
+              type="email"
+              className="loginInput"
+              value={userData.email}
+              onChange={handleChange}
+            />
+            <input
+              placeholder="Password"
+              name="password"
+              required
+              minLength="6"
+              className="loginInput"
+              value={userData.password}
+              onChange={handleChange}
+            />
+            <button type="submit" className="loginButton">
+              Log In
+            </button>
             <span className="loginForgot">Forgot Password?</span>
             <button className="loginRegisterButton">
               Create a New Account
             </button>
-          </div>
+          </form>
         </div>
       </div>
     </div>
