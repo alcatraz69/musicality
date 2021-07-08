@@ -26,9 +26,6 @@ const Login = () => {
         })
       );
 
-      console.log(user);
-      console.log(user.payload);
-
       if (user.status === 200) {
         // history.push("/");
         console.log("login success");

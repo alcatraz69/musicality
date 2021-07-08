@@ -1,8 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { loginAsync, registerAsync } from "./auth.service";
 
+export const isLoggedInLocally = () => {
+  if (localStorage.getItem("MusicalityAuth")) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
 const initialState = {
-  isLoggedIn: false,
+  isLoggedIn: isLoggedInLocally(),
   status: "idle",
   authToken: "",
 };

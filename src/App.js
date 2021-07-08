@@ -7,15 +7,18 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { selectAuth } from "./features/auth/authSlice";
 import { loadUserAsync } from "./features/user/user.service";
+import { getPostsAsync } from "./features/post/post.service";
 function App() {
   const auth = useSelector(selectAuth);
-  const dispatch = useDispatch;
+  const dispatch = useDispatch();
+
   useEffect(() => {
     (async () => {
       if (auth.isLoggedIn) {
-        console.log("isLoggedIn:", auth.isLoggedIn);
         const response = await dispatch(loadUserAsync());
-        console.log(response);
+        const response2 = await dispatch(getPostsAsync());
+        console.log(response.payload);
+        console.log(response2.payload);
       }
     })();
   }, [auth.isLoggedIn, dispatch]);

@@ -21,10 +21,13 @@ export const userSlice = createSlice({
         state.status = "user-loading";
       })
       .addCase(loadUserAsync.fulfilled, (state, action) => {
-        if (action.payload.success) {
-          state.userDetails = action.payload.user;
+        if (action.payload) {
+          state.userDetails = action.payload;
           state.status = "success";
         }
+      })
+      .addCase(loadUserAsync.rejected, (state) => {
+        state.status = "failed";
       });
   },
 });
