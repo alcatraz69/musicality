@@ -2,8 +2,10 @@ import "./Login.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginAsync } from "../../features/auth/auth.service";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({
     email: "",
@@ -25,9 +27,9 @@ const Login = () => {
           password,
         })
       );
+      history.push("/");
 
       if (user.status === 200) {
-        // history.push("/");
         console.log("login success");
       }
     } catch (err) {

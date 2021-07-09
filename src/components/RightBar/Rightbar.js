@@ -1,12 +1,21 @@
 import "./Rightbar.css";
 import { BsThreeDots } from "react-icons/bs";
+import gift from "../../Asset/gift.png";
+import mad from "../../Asset/mad.png";
+import pic8 from "../../Asset/user/8.jpeg";
+import pic1 from "../../Asset/user/1.jpeg";
+import pic2 from "../../Asset/user/2.jpeg";
+import pic3 from "../../Asset/user/3.jpeg";
+import pic4 from "../../Asset/user/4.jpeg";
+import pic7 from "../../Asset/user/7.jpeg";
+import pic9 from "../../Asset/user/9.jpeg";
 
 const Rightbar = ({ profile }) => {
   const HomeRightbar = () => {
     return (
       <>
         <div className="birthdayContainer">
-          <img src="/Asset/gift.png" alt="" className="bdayImg" />
+          <img src={gift} alt="" className="bdayImg" />
           <span className="bdayText">
             <b>James Conner</b> and <b>2 others</b> have birthdays today
           </span>
@@ -18,7 +27,7 @@ const Rightbar = ({ profile }) => {
           rel="noreferrer"
           className="sponserContainer"
         >
-          <img src="/Asset/mad.png" alt="" className="sponserImg" />
+          <img src={mad} alt="" className="sponserImg" />
           <div className="sponserTxtContainer">
             <div className="sponserTxt">Best Music Playlists</div>
             <div className="sponserLink">musicflix.com</div>
@@ -33,7 +42,7 @@ const Rightbar = ({ profile }) => {
         <ul className="friendList">
           <li className="friendItem">
             <div className="friendProfileImgContainer">
-              <img src="/Asset/user/8.jpeg" alt="" className="postProfileImg" />
+              <img src={pic8} alt="" className="postProfileImg" />
               <span className="onlineStatus"></span>
             </div>
             <span className="friendUserName">Zac Efron</span>
@@ -64,51 +73,27 @@ const Rightbar = ({ profile }) => {
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
           <div className="rightbarFollowing">
-            <img
-              src="/Asset/user/1.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
+            <img src={pic1} alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
           <div className="rightbarFollowing">
-            <img
-              src="/Asset/user/2.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
+            <img src={pic2} alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
           <div className="rightbarFollowing">
-            <img
-              src="/Asset/user/3.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
+            <img src={pic3} alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
           <div className="rightbarFollowing">
-            <img
-              src="/Asset/user/4.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
+            <img src={pic4} alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
           <div className="rightbarFollowing">
-            <img
-              src="/Asset/user/7.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
+            <img src={pic7} alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
           <div className="rightbarFollowing">
-            <img
-              src="/Asset/user/9.jpeg"
-              alt=""
-              className="rightbarFollowingImg"
-            />
+            <img src={pic9} alt="" className="rightbarFollowingImg" />
             <span className="rightbarFollowingName">John Carter</span>
           </div>
         </div>

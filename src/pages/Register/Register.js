@@ -34,7 +34,6 @@ const Register = () => {
       console.log(user.payload);
 
       if (user.status === 200) {
-        // history.push("/");
         console.log("register success");
       }
     } catch (err) {

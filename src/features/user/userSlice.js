@@ -1,8 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loadUserAsync } from "./user.service";
+import { loadUserAsync, loadUserFrndAsync } from "./user.service";
 
 const initialState = {
   userDetails: null,
+  userFriends: null,
   status: "idle",
 };
 
@@ -27,6 +28,18 @@ export const userSlice = createSlice({
         }
       })
       .addCase(loadUserAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(loadUserFrndAsync.pending, (state) => {
+        state.status = "user-loading";
+      })
+      .addCase(loadUserFrndAsync.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.userFriends = action.payload;
+          state.status = "success";
+        }
+      })
+      .addCase(loadUserFrndAsync.rejected, (state) => {
         state.status = "failed";
       });
   },

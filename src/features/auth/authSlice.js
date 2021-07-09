@@ -12,7 +12,6 @@ export const isLoggedInLocally = () => {
 const initialState = {
   isLoggedIn: isLoggedInLocally(),
   status: "idle",
-  authToken: "",
 };
 
 const addTokenToStorage = (token) => {
@@ -33,7 +32,6 @@ export const authSlice = createSlice({
     logoutUser: (state) => {
       removeToken();
       state.isLoggedIn = false;
-      state.authToken = "";
     },
   },
   extraReducers: (builder) => {
@@ -45,7 +43,6 @@ export const authSlice = createSlice({
         addTokenToStorage(action.payload.token);
         state.isLoggedIn = true;
         state.status = "success";
-        state.authToken = action.payload.token;
       })
       .addCase(registerAsync.rejected, (state) => {
         state.status = "failed";
@@ -57,7 +54,6 @@ export const authSlice = createSlice({
         addTokenToStorage(action.payload.token);
         state.isLoggedIn = true;
         state.status = "success";
-        state.authToken = action.payload.token;
       })
       .addCase(loginAsync.rejected, (state) => {
         state.status = "failed";

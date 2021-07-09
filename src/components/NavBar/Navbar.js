@@ -4,8 +4,20 @@ import { BsFillPersonPlusFill } from "react-icons/bs";
 import { IoMdChatboxes } from "react-icons/io";
 import { GiMusicSpell } from "react-icons/gi";
 import { Link } from "react-router-dom";
+import { logoutUser } from "../../features/auth/authSlice";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/user/userSlice";
 
 const Navbar = () => {
+  const { userDetails } = useSelector(selectUser);
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const clickHandler = () => {
+    dispatch(logoutUser());
+    history.push("/login");
+  };
   return (
     <div className="navbarContainer">
       <div className="navbarLeft">
@@ -31,8 +43,10 @@ const Navbar = () => {
           <IoMdChatboxes className="rightIcon" />
           <span className="iconBadge">2</span>
         </div>
-
-        <img src="/Asset/user/4.jpeg" alt="" className="userImage" />
+        <Link to="/profile" style={{ textDecoration: "none" }}>
+          <img src={userDetails?.profilePicture} alt="" className="userImage" />
+        </Link>
+        <p onClick={clickHandler}>logout</p>
       </div>
     </div>
   );

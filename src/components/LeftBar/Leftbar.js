@@ -5,15 +5,23 @@ import { BsNewspaper } from "react-icons/bs";
 import { BsBookmarks } from "react-icons/bs";
 import { IoImageOutline } from "react-icons/io5";
 import { RiSettingsLine } from "react-icons/ri";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/user/userSlice";
+import ad1 from "../../Asset/ad1.jpg";
 
 const Leftbar = () => {
+  const { userDetails } = useSelector(selectUser);
   return (
     <div className="leftbar">
       <div className="usercard">
-        <img src="/Asset/user/4.jpeg" alt="" className="userImageSide" />
+        <img
+          src={userDetails?.profilePicture}
+          alt=""
+          className="userImageSide"
+        />
         <div className="userDetails">
-          <p className="name">Alexandra Borke</p>
-          <p className="username">@alexsunshine</p>
+          <p className="name">{userDetails?.name}</p>
+          <p className="username">{userDetails?.name}</p>
         </div>
       </div>
 
@@ -47,11 +55,11 @@ const Leftbar = () => {
       </div>
 
       <div className="adContainer">
-        <img src="/Asset/ad1.jpg" alt="" className="adImg" />
+        <img src={ad1} alt="" className="adImg" />
       </div>
 
       <div className="adContainer">
-        <img src="/Asset/ad1.jpg" alt="" className="adImg" />
+        <img src={ad1} alt="" className="adImg" />
       </div>
     </div>
   );

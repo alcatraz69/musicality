@@ -2,12 +2,15 @@ import "./CreatePost.css";
 import { FcAddImage } from "react-icons/fc";
 import { FaSmileWink } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/user/userSlice";
 
 const CreatePost = () => {
+  const { userDetails } = useSelector(selectUser);
   return (
     <div className="createPostContainer">
       <div className="createPostTop">
-        <img src="/Asset/user/1.jpeg" alt="" className="userIcon" />
+        <img src={userDetails?.profilePicture} alt="" className="userIcon" />
         <input placeholder="What's on your mind?" className="createPostInput" />
       </div>
       <hr className="createPostHr" />

@@ -1,26 +1,33 @@
 import "./Post.css";
 import { BsThreeDots } from "react-icons/bs";
-const Post = () => {
+import { format } from "timeago.js";
+import like from "../../Asset/like.png";
+import heart from "../../Asset/heart.png";
+const Post = ({ post }) => {
   return (
     <div className="postContainer">
       <div className="postTop">
         <div className="postTopLeft">
-          <img src="/Asset/user/8.jpeg" alt="" className="postProfileImg" />
-          <span className="postUserName">Alexandra Kobu</span>
-          <span className="postDate">5 mins ago</span>
+          <img
+            src={post.user.profilePicture}
+            alt=""
+            className="postProfileImg"
+          />
+          <span className="postUserName">{post.user.name}</span>
+          <span className="postDate">{format(post.createdAt)}</span>
         </div>
         <div className="postTopRight">
           <BsThreeDots style={{ fontSize: "20px" }} />
         </div>
       </div>
       <div className="postCenter">
-        <span className="postCaption">Hey! Its my first post :)</span>
-        <img src="/Asset/posts/5.jpeg" alt="" className="postImg" />
+        <span className="postCaption">{post.desc}</span>
+        <img src={post.img} alt="" className="postImg" />
       </div>
       <div className="postBottom">
         <div className="postBottomLeft">
-          <img src="/Asset/like.png" alt="" className="likeBtn" />
-          <img src="/Asset/heart.png" alt="" className="likeBtn" />
+          <img src={like} alt="" className="likeBtn" />
+          <img src={heart} alt="" className="likeBtn" />
           <span className="postLikes">69 people like it</span>
         </div>
         <div className="postBottomRight">

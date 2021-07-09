@@ -5,7 +5,7 @@ const API = axios.create({ baseURL: "http://localhost:5000" });
 const config = {
   headers: {
     authorization:
-      "Bearer " + JSON.parse(localStorage.getItem("MusicalityAuth")).token,
+      "Bearer " + JSON.parse(localStorage.getItem("MusicalityAuth"))?.token,
   },
 };
 
@@ -23,6 +23,13 @@ export const login = ({ email, password }) =>
     password,
   });
 
-export const getUser = () => API.get("/user/getuser", config);
+export const getUser = (id) => API.get(`/user/getuser/${id}`, config);
 
-export const getUserPosts = () => API.get("/post/getuserpost", config);
+export const getCurrentUser = () => API.get("/user/getcurrentuser", config);
+
+export const getUserFriends = () => API.get("/user/getuserfriends", config);
+
+export const getUserPosts = (id) => API.get(`/post/getuserpost/${id}`, config);
+
+export const getTimelinePosts = () =>
+  API.get("/post//getTimelinePosts", config);
