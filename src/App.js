@@ -1,3 +1,4 @@
+import "./App.css";
 import Home from "./pages/Home/Home";
 import Profile from "./pages/Profile/Profile";
 import Login from "./pages/Login/Login";
@@ -15,12 +16,15 @@ function App() {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    console.log(JSON.parse(localStorage.getItem("MusicalityAuth"))?.token);
     (async () => {
       if (auth.isLoggedIn) {
+        console.log(auth.isLoggedIn);
         const response = await dispatch(loadUserAsync());
-        await dispatch(getPostsAsync(response.payload._id));
-        await dispatch(loadUserFrndAsync());
-        await dispatch(getTimelineAsync());
+        console.log(response);
+        dispatch(getPostsAsync(response.payload._id));
+        dispatch(loadUserFrndAsync());
+        dispatch(getTimelineAsync());
       } else {
         dispatch(resetUser());
         dispatch(resetPosts());

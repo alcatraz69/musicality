@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getPostsAsync, getTimelineAsync } from "./post.service";
+import {
+  getPostsAsync,
+  getTimelineAsync,
+  createPostAsync,
+} from "./post.service";
 
 const initialState = {
   posts: [],
@@ -35,6 +39,16 @@ export const postSlice = createSlice({
         state.timeline = action.payload;
       })
       .addCase(getTimelineAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(createPostAsync.pending, (state) => {
+        state.status = "posts-loading";
+      })
+      .addCase(createPostAsync.fulfilled, (state, action) => {
+        state.status = "success";
+        state.posts = [action.payload, ...state.posts];
+      })
+      .addCase(createPostAsync.rejected, (state) => {
         state.status = "failed";
       });
   },

@@ -1,5 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getUserPosts, getTimelinePosts } from "../../api/api";
+import {
+  getUserPosts,
+  getTimelinePosts,
+  uploadPostToServer,
+} from "../../api/api";
 
 export const getPostsAsync = createAsyncThunk(
   "post/getUserPosts",
@@ -18,6 +22,18 @@ export const getTimelineAsync = createAsyncThunk(
   async () => {
     try {
       const response = await getTimelinePosts();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const createPostAsync = createAsyncThunk(
+  "post/createPost",
+  async (data) => {
+    try {
+      const response = await uploadPostToServer(data);
       return response.data;
     } catch (error) {
       console.log(error);

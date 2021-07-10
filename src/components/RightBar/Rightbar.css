@@ -136,3 +136,14 @@
   object-fit: cover;
   border-radius: 5px;
 }
+
+.followBtn {
+  margin-top: 30px;
+  padding: 5px 15px;
+  border: none;
+  background-color: #1872f2;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}

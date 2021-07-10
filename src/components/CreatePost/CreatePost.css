@@ -50,6 +50,9 @@
   cursor: pointer;
 }
 
+#file {
+  display: none;
+}
 .shareIcon {
   margin-right: 10px;
   font-size: 25px;

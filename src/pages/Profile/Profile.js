@@ -10,6 +10,8 @@ import { selectUser } from "../../features/user/userSlice";
 import { selectPost } from "../../features/post/postSlice";
 import { useSelector } from "react-redux";
 import { getUserPosts } from "../../api/api";
+import coverPic from "../../Asset/posts/3.jpeg";
+import noAvatar from "../../Asset/noAvatar.png";
 
 const Profile = () => {
   const { userDetails } = useSelector(selectUser);
@@ -50,9 +52,15 @@ const Profile = () => {
         <div className="profileRight">
           <div className="profileRightTop">
             <div className="profileCover">
-              <img src={profile?.coverPicture} alt="" className="coverPic" />
               <img
-                src={profile?.profilePicture}
+                src={profile?.coverPicture ? profile.coverPicture : coverPic}
+                alt=""
+                className="coverPic"
+              />
+              <img
+                src={
+                  profile?.profilePicture ? profile.profilePicture : noAvatar
+                }
                 alt=""
                 className="profilePic"
               />
@@ -64,7 +72,7 @@ const Profile = () => {
           </div>
           <div className="profileRightBottom">
             <Feed posts={post} />
-            <Rightbar profile />
+            <Rightbar profile={profile} />
           </div>
         </div>
       </div>

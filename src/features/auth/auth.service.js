@@ -3,6 +3,7 @@ import { register, login } from "../../api/api";
 
 export const loginAsync = createAsyncThunk("auth/loginUser", async (user) => {
   try {
+    console.log("here", user);
     const response = await login(user);
     return response.data;
   } catch (error) {

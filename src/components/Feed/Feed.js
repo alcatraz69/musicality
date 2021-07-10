@@ -4,8 +4,10 @@ import Post from "../Post/Post";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectPost } from "../../features/post/postSlice";
+import { useParams } from "react-router";
 
 const Feed = ({ posts }) => {
+  const { id } = useParams();
   const { timeline } = useSelector(selectPost);
   const [state, setstate] = useState(posts);
   useEffect(() => {
@@ -18,7 +20,7 @@ const Feed = ({ posts }) => {
 
   return (
     <div className="feed">
-      <CreatePost />
+      {!id && <CreatePost />}
       {state?.map((item) => {
         return <Post key={item._id} post={item} />;
       })}

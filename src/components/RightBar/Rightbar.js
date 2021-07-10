@@ -9,8 +9,33 @@ import pic3 from "../../Asset/user/3.jpeg";
 import pic4 from "../../Asset/user/4.jpeg";
 import pic7 from "../../Asset/user/7.jpeg";
 import pic9 from "../../Asset/user/9.jpeg";
+import { useParams } from "react-router";
+import { useSelector } from "react-redux";
+import { selectUser } from "../../features/user/userSlice";
+import { useState, useEffect } from "react";
+import { unfollowUser, followUser } from "../../api/api";
 
 const Rightbar = ({ profile }) => {
+  const { id } = useParams();
+  const { userDetails } = useSelector(selectUser);
+  const [followed, setFollowed] = useState(false);
+
+  useEffect(() => {
+    setFollowed(userDetails?.following?.includes(id));
+  }, [userDetails, id]);
+
+  const handleClick = async () => {
+    try {
+      if (followed) {
+        await unfollowUser(id);
+      } else {
+        await followUser(id);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+    setFollowed(!followed);
+  };
   const HomeRightbar = () => {
     return (
       <>
@@ -55,6 +80,11 @@ const Rightbar = ({ profile }) => {
   const ProfileRightbar = () => {
     return (
       <>
+        {id && (
+          <button className="followBtn" onClick={handleClick}>
+            {followed ? "Unfollow" : "Follow"}
+          </button>
+        )}
         <h4 className="rightbarTitle">User information</h4>
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
