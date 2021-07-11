@@ -8,6 +8,7 @@ import { RiSettingsLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import ad1 from "../../Asset/ad1.jpg";
+import noAvatar from "../../Asset/noAvatar.png";
 
 const Leftbar = () => {
   const { userDetails } = useSelector(selectUser);
@@ -15,7 +16,9 @@ const Leftbar = () => {
     <div className="leftbar">
       <div className="usercard">
         <img
-          src={userDetails?.profilePicture}
+          src={
+            userDetails?.profilePicture ? userDetails.profilePicture : noAvatar
+          }
           alt=""
           className="userImageSide"
         />

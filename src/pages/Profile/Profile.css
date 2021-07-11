@@ -33,6 +33,28 @@
   margin: auto;
   top: 150px;
   border: 3px solid #fff;
+  cursor: pointer;
+}
+
+.profilePicEdit {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  top: 150px;
+  /* border: 3px solid #fff; */
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.profilePic:hover + .profilePicEdit {
+  display: flex;
 }
 
 .profileInfo {

@@ -3,6 +3,7 @@ import {
   getUserPosts,
   getTimelinePosts,
   uploadPostToServer,
+  likePost,
 } from "../../api/api";
 
 export const getPostsAsync = createAsyncThunk(
@@ -40,3 +41,12 @@ export const createPostAsync = createAsyncThunk(
     }
   }
 );
+
+export const likePostAsync = createAsyncThunk("post/likePost", async (id) => {
+  try {
+    const response = await likePost(id);
+    return response.data;
+  } catch (error) {
+    console.log(error);
+  }
+});

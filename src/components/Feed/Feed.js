@@ -21,9 +21,15 @@ const Feed = ({ posts }) => {
   return (
     <div className="feed">
       {!id && <CreatePost />}
-      {state?.map((item) => {
-        return <Post key={item._id} post={item} />;
-      })}
+      {state?.length > 0 ? (
+        state?.map((item) => {
+          return <Post key={item?._id} post={item} />;
+        })
+      ) : posts ? (
+        <p className="noPostTxt">Have'nt Posted anything yet!</p>
+      ) : (
+        <p className="noPostTxt">Follow people to get some feed!</p>
+      )}
     </div>
   );
 };

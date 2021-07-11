@@ -2,8 +2,10 @@ import "./Register.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerAsync } from "../../features/auth/auth.service";
+import { useHistory, Link } from "react-router-dom";
 
 const Register = () => {
+  const history = useHistory();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({
     name: "",
@@ -33,8 +35,9 @@ const Register = () => {
       console.log(user);
       console.log(user.payload);
 
-      if (user.status === 200) {
+      if (user) {
         console.log("register success");
+        history.push("/");
       }
     } catch (err) {
       console.log(err);
@@ -90,7 +93,10 @@ const Register = () => {
             <button type="submit" className="loginButton">
               Sign Up
             </button>
-            <button className="loginRegisterButton">Log into Account</button>
+            <span className="loginForgot">Already on Musicality?</span>
+            <Link to="/login" className="linkStyle">
+              <button className="loginRegisterButton">Log into Account</button>
+            </Link>
           </form>
         </div>
       </div>

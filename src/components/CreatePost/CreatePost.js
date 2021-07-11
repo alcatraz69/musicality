@@ -2,12 +2,14 @@ import "./CreatePost.css";
 import { FcAddImage } from "react-icons/fc";
 import { FaSmileWink } from "react-icons/fa";
 import { ImLocation } from "react-icons/im";
+import { MdCancel } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import { useState, useEffect } from "react";
 import { uploadPost } from "../../api/api";
 import { createPostAsync } from "../../features/post/post.service";
 import { useDispatch } from "react-redux";
+import noAvatar from "../../Asset/noAvatar.png";
 
 const CreatePost = () => {
   const dispatch = useDispatch();
@@ -36,13 +38,23 @@ const CreatePost = () => {
     file && formData.append("file", file);
     formData.append("upload_preset", "musicality");
     formData.append("cloud_name", "premcloud");
-    const response = await uploadPost(formData);
-    setImgUrl(response?.data?.url);
+    if (file) {
+      const response = await uploadPost(formData);
+      setImgUrl(response?.data?.url);
+    } else {
+      setImgUrl("");
+    }
   };
   return (
     <div className="createPostContainer">
       <div className="createPostTop">
-        <img src={userDetails?.profilePicture} alt="" className="userIcon" />
+        <img
+          src={
+            userDetails?.profilePicture ? userDetails.profilePicture : noAvatar
+          }
+          alt=""
+          className="userIcon"
+        />
         <input
           placeholder="What's on your mind?"
           className="createPostInput"
@@ -51,6 +63,16 @@ const CreatePost = () => {
         />
       </div>
       <hr className="createPostHr" />
+      {file && (
+        <div className="postImgContainer">
+          <img
+            src={URL.createObjectURL(file)}
+            alt=""
+            className="postImgDisplay"
+          />
+          <MdCancel className="postImgCancel" onClick={() => setFile(null)} />
+        </div>
+      )}
       <form className="createPostBottom" onSubmit={submitPost}>
         <label htmlFor="file" className="createPostOption">
           <FcAddImage className="shareIcon" />

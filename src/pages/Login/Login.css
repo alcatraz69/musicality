@@ -89,3 +89,9 @@
   font-weight: 500;
   cursor: pointer;
 }
+
+.linkStyle {
+  text-decoration: none;
+  color: black;
+  text-align: center;
+}

@@ -3,19 +3,15 @@ import { BsThreeDots } from "react-icons/bs";
 import gift from "../../Asset/gift.png";
 import mad from "../../Asset/mad.png";
 import pic8 from "../../Asset/user/8.jpeg";
-import pic1 from "../../Asset/user/1.jpeg";
-import pic2 from "../../Asset/user/2.jpeg";
-import pic3 from "../../Asset/user/3.jpeg";
-import pic4 from "../../Asset/user/4.jpeg";
-import pic7 from "../../Asset/user/7.jpeg";
-import pic9 from "../../Asset/user/9.jpeg";
+import { Link } from "react-router-dom";
 import { useParams } from "react-router";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import { useState, useEffect } from "react";
 import { unfollowUser, followUser } from "../../api/api";
+import noAvatar from "../../Asset/noAvatar.png";
 
-const Rightbar = ({ profile }) => {
+const Rightbar = ({ profile, friends }) => {
   const { id } = useParams();
   const { userDetails } = useSelector(selectUser);
   const [followed, setFollowed] = useState(false);
@@ -89,43 +85,38 @@ const Rightbar = ({ profile }) => {
         <div className="rightbarInfo">
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">City:</span>
-            <span className="rightbarInfoValue">New York</span>
+            <span className="rightbarInfoValue">{profile.city}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">From:</span>
-            <span className="rightbarInfoValue">Madrid</span>
+            <span className="rightbarInfoValue">{profile.from}</span>
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Interests:</span>
-            <span className="rightbarInfoValue">Guitar,Voilin</span>
+            <span className="rightbarInfoValue">{profile.interest}</span>
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img src={pic1} alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Carter</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src={pic2} alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Carter</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src={pic3} alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Carter</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src={pic4} alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Carter</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src={pic7} alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Carter</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src={pic9} alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Carter</span>
-          </div>
+          {friends?.map((friend) => {
+            return (
+              <Link
+                to={`/profile/${friend._id}`}
+                style={{ textDecoration: "none", color: "Black" }}
+              >
+                <div className="rightbarFollowing" key={friend._id}>
+                  <img
+                    src={
+                      friend?.profilePicture ? friend.profilePicture : noAvatar
+                    }
+                    alt=""
+                    className="rightbarFollowingImg"
+                  />
+                  <span className="rightbarFollowingName">{friend.name}</span>
+                </div>
+              </Link>
+            );
+          })}
         </div>
       </>
     );

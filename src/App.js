@@ -22,8 +22,8 @@ function App() {
         console.log(auth.isLoggedIn);
         const response = await dispatch(loadUserAsync());
         console.log(response);
-        dispatch(getPostsAsync(response.payload._id));
-        dispatch(loadUserFrndAsync());
+        dispatch(getPostsAsync(response.payload?._id));
+        dispatch(loadUserFrndAsync(response.payload?._id));
         dispatch(getTimelineAsync());
       } else {
         dispatch(resetUser());
@@ -35,13 +35,13 @@ function App() {
     <Router>
       <Switch>
         <Route exact path="/">
-          <Home />
+          {auth.isLoggedIn ? <Home /> : <Login />}
         </Route>
         <Route path="/profile/:id">
-          <Profile />
+          {auth.isLoggedIn ? <Profile /> : <Login />}
         </Route>
         <Route path="/profile">
-          <Profile />
+          {auth.isLoggedIn ? <Profile /> : <Login />}
         </Route>
         <Route path="/login">
           <Login />

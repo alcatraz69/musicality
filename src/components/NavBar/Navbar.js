@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
+import noAvatar from "../../Asset/noAvatar.png";
 
 const Navbar = () => {
   const { userDetails } = useSelector(selectUser);
@@ -44,7 +45,15 @@ const Navbar = () => {
           <span className="iconBadge">2</span>
         </div>
         <Link to="/profile" style={{ textDecoration: "none" }}>
-          <img src={userDetails?.profilePicture} alt="" className="userImage" />
+          <img
+            src={
+              userDetails?.profilePicture
+                ? userDetails.profilePicture
+                : noAvatar
+            }
+            alt=""
+            className="userImage"
+          />
         </Link>
         <p onClick={clickHandler}>logout</p>
       </div>

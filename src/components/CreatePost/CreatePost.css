@@ -1,6 +1,6 @@
 .createPostContainer {
   width: 100%;
-  height: 155px;
+  /* height: 155px; */
   border-radius: 10px;
   background-color: #fff;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
@@ -42,6 +42,7 @@
   align-items: center;
   justify-content: space-between;
   margin: 0 20px;
+  padding-bottom: 12px;
 }
 
 .createPostOption {
@@ -64,4 +65,21 @@
   border: none;
   color: #fff;
   border-radius: 5px;
+}
+
+.postImgContainer {
+  padding: 15px;
+  position: relative;
+}
+
+.postImgDisplay {
+  width: 100%;
+  object-fit: cover;
+}
+
+.postImgCancel {
+  position: absolute;
+  top: -2px;
+  right: 16px;
+  cursor: pointer;
 }

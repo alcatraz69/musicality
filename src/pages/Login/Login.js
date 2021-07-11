@@ -2,7 +2,7 @@ import "./Login.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginAsync } from "../../features/auth/auth.service";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 
 const Login = () => {
   const history = useHistory();
@@ -69,10 +69,16 @@ const Login = () => {
             <button type="submit" className="loginButton">
               Log In
             </button>
-            <span className="loginForgot">Forgot Password?</span>
-            <button className="loginRegisterButton">
-              Create a New Account
-            </button>
+            <span className="loginForgot">New to Musicality?</span>
+            <Link
+              to="/register"
+              className="linkStyle"
+              style={{ color: "white" }}
+            >
+              <button className="loginRegisterButton">
+                Create a New Account
+              </button>
+            </Link>
           </form>
         </div>
       </div>

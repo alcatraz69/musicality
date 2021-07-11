@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getCurrentUser, getUserFriends } from "../../api/api";
+import { getCurrentUser, getUserFriends, updateUser } from "../../api/api";
 
 export const loadUserAsync = createAsyncThunk("user/getUser", async () => {
   try {
@@ -12,9 +12,21 @@ export const loadUserAsync = createAsyncThunk("user/getUser", async () => {
 
 export const loadUserFrndAsync = createAsyncThunk(
   "user/getUserFriends",
-  async () => {
+  async (id) => {
     try {
-      const response = await getUserFriends();
+      const response = await getUserFriends(id);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const updateUserAsync = createAsyncThunk(
+  "user/updateUserDetails",
+  async (data) => {
+    try {
+      const response = await updateUser(data);
       return response.data;
     } catch (error) {
       console.log(error);

@@ -3,6 +3,7 @@ import {
   getPostsAsync,
   getTimelineAsync,
   createPostAsync,
+  likePostAsync,
 } from "./post.service";
 
 const initialState = {
@@ -47,8 +48,19 @@ export const postSlice = createSlice({
       .addCase(createPostAsync.fulfilled, (state, action) => {
         state.status = "success";
         state.posts = [action.payload, ...state.posts];
+        // state.posts.unshift(action.payload.post);
       })
       .addCase(createPostAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(likePostAsync.pending, (state) => {
+        state.status = "posts-loading";
+      })
+      .addCase(likePostAsync.fulfilled, (state, action) => {
+        state.status = "success";
+        console.log("see here", action);
+      })
+      .addCase(likePostAsync.rejected, (state) => {
         state.status = "failed";
       });
   },
