@@ -1,13 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   loadUserAsync,
-  loadUserFrndAsync,
   updateUserAsync,
+  followUserAsync,
+  unfollowUserAsync,
 } from "./user.service";
 
 const initialState = {
   userDetails: null,
-  userFriends: null,
   status: "idle",
 };
 
@@ -15,7 +15,7 @@ export const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    resetUser: (state) => {
+    resetUser: () => {
       return initialState;
     },
   },
@@ -32,18 +32,6 @@ export const userSlice = createSlice({
         }
       })
       .addCase(loadUserAsync.rejected, (state) => {
-        state.status = "failed";
-      })
-      .addCase(loadUserFrndAsync.pending, (state) => {
-        state.status = "user-loading";
-      })
-      .addCase(loadUserFrndAsync.fulfilled, (state, action) => {
-        if (action.payload) {
-          state.userFriends = action.payload;
-          state.status = "success";
-        }
-      })
-      .addCase(loadUserFrndAsync.rejected, (state) => {
         state.status = "failed";
       })
       .addCase(updateUserAsync.pending, (state) => {
@@ -63,6 +51,24 @@ export const userSlice = createSlice({
       })
       .addCase(updateUserAsync.rejected, (state) => {
         state.status = "failed";
+      })
+      .addCase(followUserAsync.pending, (state) => {
+        state.status = "user-loading";
+      })
+      .addCase(followUserAsync.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.userDetails.following = action.payload.following;
+          state.status = "success";
+        }
+      })
+      .addCase(unfollowUserAsync.pending, (state) => {
+        state.status = "user-loading";
+      })
+      .addCase(unfollowUserAsync.fulfilled, (state, action) => {
+        if (action.payload) {
+          state.userDetails.following = action.payload.following;
+          state.status = "success";
+        }
       });
   },
 });

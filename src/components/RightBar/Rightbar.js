@@ -5,31 +5,41 @@ import mad from "../../Asset/mad.png";
 import pic8 from "../../Asset/user/8.jpeg";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import { useState, useEffect } from "react";
-import { unfollowUser, followUser } from "../../api/api";
+import {
+  unfollowUserAsync,
+  followUserAsync,
+} from "../../features/user/user.service";
 import noAvatar from "../../Asset/noAvatar.png";
 
-const Rightbar = ({ profile, friends }) => {
+const Rightbar = ({ profile }) => {
   const { id } = useParams();
+  const dispatch = useDispatch();
   const { userDetails } = useSelector(selectUser);
   const [followed, setFollowed] = useState(false);
+  const friends = userDetails?.following;
+  const profileFriends = profile?.following;
 
   useEffect(() => {
-    setFollowed(userDetails?.following?.includes(id));
-  }, [userDetails, id]);
+    friends?.map((friend) => {
+      if (friend?._id === profile?._id) {
+        return setFollowed(true);
+      } else {
+        return null;
+      }
+    });
+  }, [profile?._id, friends]);
 
   const handleClick = async () => {
     try {
       if (followed) {
-        await unfollowUser(id);
+        await dispatch(unfollowUserAsync(id));
       } else {
-        await followUser(id);
+        await dispatch(followUserAsync(id));
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
     setFollowed(!followed);
   };
   const HomeRightbar = () => {
@@ -98,7 +108,7 @@ const Rightbar = ({ profile, friends }) => {
         </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
-          {friends?.map((friend) => {
+          {profileFriends?.map((friend) => {
             return (
               <Link
                 to={`/profile/${friend._id}`}

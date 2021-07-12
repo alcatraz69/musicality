@@ -8,18 +8,17 @@ import { useState, useEffect } from "react";
 import { selectUser } from "../../features/user/userSlice";
 import { selectPost } from "../../features/post/postSlice";
 import { useSelector } from "react-redux";
-import { getUserPosts, getUser, getUserFriends } from "../../api/api";
+import { getUserPosts, getUser } from "../../api/api";
 import coverPic from "../../Asset/posts/3.jpeg";
 import noAvatar from "../../Asset/noAvatar.png";
 import Modal from "../../components/Modal/Modal";
 
 const Profile = () => {
-  const { userDetails, userFriends } = useSelector(selectUser);
+  const { userDetails } = useSelector(selectUser);
   const { posts } = useSelector(selectPost);
   const { id } = useParams();
   const [profile, setProfile] = useState(userDetails);
   const [post, setPost] = useState(posts);
-  const [friends, setFriends] = useState(userFriends);
   const [show, setShow] = useState(false);
 
   useEffect(() => {
@@ -35,16 +34,9 @@ const Profile = () => {
         setPost(response.data);
       }
     }
-    async function fetchUserFriends() {
-      const response = await getUserFriends(id);
-      if (response) {
-        setFriends(response.data);
-      }
-    }
     if (id) {
       fetchUser();
       fetchUserPost();
-      fetchUserFriends();
     }
   }, [id]);
 
@@ -52,9 +44,8 @@ const Profile = () => {
     if (!id) {
       setProfile(userDetails);
       setPost(posts);
-      setFriends(userFriends);
     }
-  }, [id, userDetails, posts, userFriends]);
+  }, [id, userDetails, posts]);
 
   return (
     <>
@@ -90,7 +81,7 @@ const Profile = () => {
           </div>
           <div className="profileRightBottom">
             <Feed posts={post} />
-            <Rightbar profile={profile} friends={friends} />
+            <Rightbar profile={profile} />
           </div>
         </div>
       </div>

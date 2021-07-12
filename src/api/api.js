@@ -28,9 +28,6 @@ export const getUser = (id) => API.get(`/user/getuser/${id}`, config());
 
 export const getCurrentUser = () => API.get("/user/getcurrentuser", config());
 
-export const getUserFriends = (id) =>
-  API.get(`/user/getuserfriends/${id}`, config());
-
 export const getUserPosts = (id) =>
   API.get(`/post/getuserpost/${id}`, config());
 

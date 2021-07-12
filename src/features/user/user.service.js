@@ -1,5 +1,10 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getCurrentUser, getUserFriends, updateUser } from "../../api/api";
+import {
+  getCurrentUser,
+  updateUser,
+  followUser,
+  unfollowUser,
+} from "../../api/api";
 
 export const loadUserAsync = createAsyncThunk("user/getUser", async () => {
   try {
@@ -10,11 +15,11 @@ export const loadUserAsync = createAsyncThunk("user/getUser", async () => {
   }
 });
 
-export const loadUserFrndAsync = createAsyncThunk(
-  "user/getUserFriends",
-  async (id) => {
+export const updateUserAsync = createAsyncThunk(
+  "user/updateUserDetails",
+  async (data) => {
     try {
-      const response = await getUserFriends(id);
+      const response = await updateUser(data);
       return response.data;
     } catch (error) {
       console.log(error);
@@ -22,11 +27,23 @@ export const loadUserFrndAsync = createAsyncThunk(
   }
 );
 
-export const updateUserAsync = createAsyncThunk(
-  "user/updateUserDetails",
-  async (data) => {
+export const followUserAsync = createAsyncThunk(
+  "user/followUser",
+  async (id) => {
     try {
-      const response = await updateUser(data);
+      const response = await followUser(id);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+
+export const unfollowUserAsync = createAsyncThunk(
+  "user/unfollowUser",
+  async (id) => {
+    try {
+      const response = await unfollowUser(id);
       return response.data;
     } catch (error) {
       console.log(error);
