@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "https://musicality-backend.herokuapp.com",
+  // baseURL: "https://musicality-backend.herokuapp.com",
+  baseURL: "http://localhost:5000",
 });
 
 const config = () => {
@@ -37,7 +38,7 @@ export const getUserPosts = (id) =>
   API.get(`/post/getuserpost/${id}`, config());
 
 export const getTimelinePosts = () =>
-  API.get("/post//getTimelinePosts", config());
+  API.get("/post/getTimelinePosts", config());
 
 export const followUser = (id) =>
   API.put(`/user/followuser/${id}`, {}, config());

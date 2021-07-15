@@ -34,6 +34,7 @@ const CreatePost = () => {
       dispatch(getTimelineAsync());
       setFile(null);
       setDesc("");
+      setImgUrl("");
     }
   }, [imgUrl, user, desc, dispatch]);
   const submitPost = async (e) => {

@@ -32,9 +32,6 @@ const Register = () => {
         })
       );
 
-      console.log(user);
-      console.log(user.payload);
-
       if (user) {
         console.log("register success");
         history.push("/");
