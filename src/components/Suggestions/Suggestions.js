@@ -21,7 +21,7 @@ const Suggestions = () => {
   };
   return (
     <div className="suggestionsContainer">
-      <h1 className="suggestionHead">People you may know</h1>
+      <p className="suggestionHead">People you may know</p>
       {suggestions?.map((person) => {
         return (
           <div className="suggestionItem" key={person._id}>

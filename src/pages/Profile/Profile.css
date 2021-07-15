@@ -75,3 +75,9 @@
 .profileRightBottom {
   display: flex;
 }
+
+@media screen and (max-width: 578px) {
+  .profileRightTop {
+    padding-left: 0;
+  }
+}
