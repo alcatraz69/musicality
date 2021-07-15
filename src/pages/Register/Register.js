@@ -76,6 +76,7 @@ const Register = () => {
               placeholder="Password"
               name="password"
               required
+              type="password"
               minLength="6"
               className="loginInput"
               value={userData.password}
@@ -85,6 +86,7 @@ const Register = () => {
               placeholder="Password Again"
               name="cpassword"
               required
+              type="password"
               minLength="6"
               className="loginInput"
               value={userData.cpassword}

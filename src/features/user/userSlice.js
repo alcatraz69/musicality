@@ -4,10 +4,12 @@ import {
   updateUserAsync,
   followUserAsync,
   unfollowUserAsync,
+  getUserSuggestionsAsync,
 } from "./user.service";
 
 const initialState = {
   userDetails: null,
+  suggestions: null,
   status: "idle",
 };
 
@@ -32,6 +34,18 @@ export const userSlice = createSlice({
         }
       })
       .addCase(loadUserAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(getUserSuggestionsAsync.pending, (state) => {
+        state.status = "user-loading";
+      })
+      .addCase(getUserSuggestionsAsync.fulfilled, (state, action) => {
+        if (action) {
+          state.suggestions = action.payload;
+          state.status = "success";
+        }
+      })
+      .addCase(getUserSuggestionsAsync.rejected, (state) => {
         state.status = "failed";
       })
       .addCase(updateUserAsync.pending, (state) => {

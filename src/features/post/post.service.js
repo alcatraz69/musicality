@@ -4,6 +4,7 @@ import {
   getTimelinePosts,
   uploadPostToServer,
   likePost,
+  deletePost,
 } from "../../api/api";
 
 export const getPostsAsync = createAsyncThunk(
@@ -50,3 +51,15 @@ export const likePostAsync = createAsyncThunk("post/likePost", async (id) => {
     console.log(error);
   }
 });
+
+export const deletePostAsync = createAsyncThunk(
+  "post/deletePost",
+  async (id) => {
+    try {
+      const response = await deletePost(id);
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);

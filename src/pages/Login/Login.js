@@ -61,6 +61,7 @@ const Login = () => {
               placeholder="Password"
               name="password"
               required
+              type="password"
               minLength="6"
               className="loginInput"
               value={userData.password}

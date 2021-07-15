@@ -9,3 +9,11 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+@media screen and (max-width: 578px) {
+  .registerBox {
+    width: 95%;
+
+    margin-left: -12px;
+  }
+}

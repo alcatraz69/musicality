@@ -3,16 +3,29 @@ import { BsThreeDots } from "react-icons/bs";
 import { format } from "timeago.js";
 import like from "../../Asset/like.png";
 import heart from "../../Asset/heart.png";
-import { useDispatch } from "react-redux";
-import { likePostAsync } from "../../features/post/post.service";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  likePostAsync,
+  deletePostAsync,
+  getTimelineAsync,
+} from "../../features/post/post.service";
+import { useState } from "react";
+import { selectUser } from "../../features/user/userSlice";
+import { Link } from "react-router-dom";
+
 const Post = ({ post }) => {
+  const { userDetails } = useSelector(selectUser);
   const dispatch = useDispatch();
-  const likeHandler = async () => {
-    try {
-      await dispatch(likePostAsync(post._id));
-    } catch (error) {
-      console.log(error);
-    }
+  const [isOpen, setIsOpen] = useState(false);
+
+  const isCurrentUser = () => post.user._id === userDetails._id;
+  const likeHandler = () => {
+    dispatch(likePostAsync(post?._id));
+  };
+
+  const deleteHandler = async () => {
+    await dispatch(deletePostAsync(post?._id));
+    dispatch(getTimelineAsync());
   };
   return (
     <div className="postContainer">
@@ -23,15 +36,29 @@ const Post = ({ post }) => {
             alt=""
             className="postProfileImg"
           />
-          <span className="postUserName">{post?.user?.name}</span>
+          <Link to={`/profile/${post?.user?._id}`} className="linkStyle">
+            <span className="postUserName">{post?.user?.name}</span>
+          </Link>
           <span className="postDate">{format(post?.createdAt)}</span>
         </div>
         <div className="postTopRight">
-          <BsThreeDots style={{ fontSize: "20px" }} />
+          <BsThreeDots
+            style={{ fontSize: "20px" }}
+            onClick={() => {
+              setIsOpen(!isOpen);
+            }}
+            className="postOptions"
+          />
+          {isOpen && isCurrentUser() && (
+            <div id="postOptions" className="postOptionsContent">
+              <div onClick={deleteHandler}>Delete</div>
+            </div>
+          )}
         </div>
       </div>
+
       <div className="postCenter">
-        <span className="postCaption">{post?.desc}</span>
+        <div className="postCaption">{post?.desc}</div>
         <img src={post.img} alt="" className="postImg" />
       </div>
       <div className="postBottom">

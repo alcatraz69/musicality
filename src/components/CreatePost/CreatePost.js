@@ -1,13 +1,14 @@
 import "./CreatePost.css";
 import { FcAddImage } from "react-icons/fc";
-import { FaSmileWink } from "react-icons/fa";
-import { ImLocation } from "react-icons/im";
 import { MdCancel } from "react-icons/md";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import { useState, useEffect } from "react";
 import { uploadPost } from "../../api/api";
-import { createPostAsync } from "../../features/post/post.service";
+import {
+  createPostAsync,
+  getTimelineAsync,
+} from "../../features/post/post.service";
 import { useDispatch } from "react-redux";
 import noAvatar from "../../Asset/noAvatar.png";
 
@@ -30,6 +31,9 @@ const CreatePost = () => {
         );
       };
       finalUpload();
+      dispatch(getTimelineAsync());
+      setFile(null);
+      setDesc("");
     }
   }, [imgUrl, user, desc, dispatch]);
   const submitPost = async (e) => {
@@ -84,14 +88,7 @@ const CreatePost = () => {
             onChange={(e) => setFile(e.target.files[0])}
           />
         </label>
-        <div className="createPostOption">
-          <FaSmileWink style={{ color: "goldenrod" }} className="shareIcon" />
-          <span className="createPostText">Feelings</span>
-        </div>
-        <div className="createPostOption">
-          <ImLocation style={{ color: "green" }} className="shareIcon" />
-          <span className="createPostText">Location</span>
-        </div>
+
         <button type="submit" className="postBtn">
           Post!
         </button>

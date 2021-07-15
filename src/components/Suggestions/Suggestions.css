@@ -1,0 +1,56 @@
+.suggestionsContainer {
+  flex: 5.5;
+  padding: 24px 30px;
+}
+
+.suggestionHead {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.suggestionItem {
+  width: auto;
+  margin: 0 0 30px 0;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 20px 40px;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.suggestionUserIcon {
+  width: 70px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.suggestionName {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.suggestionAbout {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.suggestionItemleft {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.suggestionsBtn {
+  /* margin: 20px 0; */
+  padding: 8px 25px;
+  border: none;
+  background-color: #1872f2;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}

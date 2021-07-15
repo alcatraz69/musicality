@@ -103,7 +103,7 @@ const Rightbar = ({ profile }) => {
           </div>
           <div className="rightbarInfoItem">
             <span className="rightbarInfoKey">Interests:</span>
-            <span className="rightbarInfoValue">{profile.interest}</span>
+            <span className="rightbarInfoValue">{profile.interests}</span>
           </div>
         </div>
         <h4 className="rightbarTitle">User friends</h4>
@@ -113,8 +113,9 @@ const Rightbar = ({ profile }) => {
               <Link
                 to={`/profile/${friend._id}`}
                 style={{ textDecoration: "none", color: "Black" }}
+                key={friend._id}
               >
-                <div className="rightbarFollowing" key={friend._id}>
+                <div className="rightbarFollowing">
                   <img
                     src={
                       friend?.profilePicture ? friend.profilePicture : noAvatar

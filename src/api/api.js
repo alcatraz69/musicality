@@ -26,6 +26,9 @@ export const login = ({ email, password }) =>
 
 export const getUser = (id) => API.get(`/user/getuser/${id}`, config());
 
+export const getUserSuggestions = () =>
+  API.get("/user/getUserSuggestions", config());
+
 export const getCurrentUser = () => API.get("/user/getcurrentuser", config());
 
 export const getUserPosts = (id) =>
@@ -46,21 +49,8 @@ export const uploadPostToServer = (data) => API.post("/post/createPost", data);
 
 export const likePost = (id) => API.put(`/post/likePost/${id}`, {}, config());
 
+export const deletePost = (id) =>
+  API.delete(`/post/deletePost/${id}`, {}, config());
+
 export const updateUser = (data) =>
   API.put("/user/updateuser", { data }, config());
-// API.post("/post//createPost", data);
-// export const submitPost = async (post: FormData) => {
-// axios.post("https://api.cloudinary.com/v1_1/premcloud",data)
-//   const token = getAuthToken();
-//   const response = await axios.post(
-//     "https://dev-share-api.hntejas.repl.co/post",
-//     post,
-//     {
-//       headers: {
-//         Authorization: token,
-//         "Content-type": "multipart/form-data",
-//       },
-//     }
-//   );
-//   return response;
-// };

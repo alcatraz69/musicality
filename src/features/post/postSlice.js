@@ -4,6 +4,7 @@ import {
   getTimelineAsync,
   createPostAsync,
   likePostAsync,
+  deletePostAsync,
 } from "./post.service";
 
 const initialState = {
@@ -58,9 +59,35 @@ export const postSlice = createSlice({
       })
       .addCase(likePostAsync.fulfilled, (state, action) => {
         state.status = "success";
-        console.log("see here", action);
+        const timelinePostIndex = state.timeline.findIndex(
+          (post) => post._id === action.payload._id
+        );
+        if (timelinePostIndex !== -1) {
+          state.timeline[timelinePostIndex].likes = action.payload.likes;
+        }
+        const postIndex = state.posts.findIndex(
+          (post) => post._id === action.payload._id
+        );
+        if (postIndex !== -1) {
+          state.posts[postIndex].likes = action.payload.likes;
+        }
       })
       .addCase(likePostAsync.rejected, (state) => {
+        state.status = "failed";
+      })
+      .addCase(deletePostAsync.pending, (state) => {
+        state.status = "posts-loading";
+      })
+      .addCase(deletePostAsync.fulfilled, (state, action) => {
+        state.status = "success";
+        const postIndex = state.posts.findIndex(
+          (post) => post._id === action.meta.arg
+        );
+        if (postIndex !== -1) {
+          state.posts.splice(postIndex, 1);
+        }
+      })
+      .addCase(deletePostAsync.rejected, (state) => {
         state.status = "failed";
       });
   },

@@ -4,6 +4,7 @@ import {
   updateUser,
   followUser,
   unfollowUser,
+  getUserSuggestions,
 } from "../../api/api";
 
 export const loadUserAsync = createAsyncThunk("user/getUser", async () => {
@@ -14,6 +15,18 @@ export const loadUserAsync = createAsyncThunk("user/getUser", async () => {
     console.log(error);
   }
 });
+
+export const getUserSuggestionsAsync = createAsyncThunk(
+  "user/getUserSuggestions",
+  async () => {
+    try {
+      const response = await getUserSuggestions();
+      return response.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 export const updateUserAsync = createAsyncThunk(
   "user/updateUserDetails",

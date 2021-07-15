@@ -13,7 +13,7 @@ const Modal = ({ show, setShow }) => {
   const [about, setAbout] = useState(userDetails?.about);
   const [city, setCity] = useState(userDetails?.city);
   const [from, setFrom] = useState(userDetails?.from);
-  const [interest, setInterest] = useState(userDetails?.interest);
+  const [interest, setInterest] = useState(userDetails?.interests);
   const [file, setFile] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
 

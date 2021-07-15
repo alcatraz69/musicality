@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
 import ad1 from "../../Asset/ad1.jpg";
 import noAvatar from "../../Asset/noAvatar.png";
+import { Link } from "react-router-dom";
 
 const Leftbar = () => {
   const { userDetails } = useSelector(selectUser);
@@ -30,21 +31,25 @@ const Leftbar = () => {
 
       <div className="leftbarListContainer">
         <ul className="leftbarList">
-          <li className="leftbarListitem">
-            <GoHome className="itemIcon" />
-            <span className="itemText">Home</span>
-          </li>
+          <Link to="/" className="linkStyle">
+            <li className="leftbarListitem">
+              <GoHome className="itemIcon" />
+              <span className="itemText">Home</span>
+            </li>
+          </Link>
           <li className="leftbarListitem">
             <BsNewspaper className="itemIcon" />
             <span className="itemText">Feed</span>
           </li>
           <li className="leftbarListitem">
-            <BsBookmarks className="itemIcon" />
-            <span className="itemText">Saved</span>
+            <Link to="/people" className="linkStyle">
+              <IoIosPeople className="itemIcon" />
+              <span className="itemText">People</span>
+            </Link>
           </li>
           <li className="leftbarListitem">
-            <IoIosPeople className="itemIcon" />
-            <span className="itemText">People</span>
+            <BsBookmarks className="itemIcon" />
+            <span className="itemText">Saved</span>
           </li>
           <li className="leftbarListitem">
             <IoImageOutline className="itemIcon" />

@@ -96,3 +96,20 @@
   object-fit: cover;
   cursor: pointer;
 }
+
+@media screen and (max-width: 578px) {
+  .rightIcon {
+    display: none;
+  }
+  .iconBadge {
+    display: none;
+  }
+  .searchBar {
+    display: none;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin-left: 8px;
+  }
+}
