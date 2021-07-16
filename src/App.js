@@ -7,7 +7,7 @@ import People from "./pages/People/People";
 import { useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { selectAuth } from "./features/auth/authSlice";
+import { logoutUser, selectAuth } from "./features/auth/authSlice";
 import {
   loadUserAsync,
   getUserSuggestionsAsync,
@@ -24,6 +24,9 @@ function App() {
     (async () => {
       if (auth.isLoggedIn) {
         const response = await dispatch(loadUserAsync());
+        if (response.payload?.status === 401) {
+          dispatch(logoutUser());
+        }
         dispatch(getPostsAsync(response.payload?._id));
         dispatch(getUserSuggestionsAsync());
         dispatch(getTimelineAsync());

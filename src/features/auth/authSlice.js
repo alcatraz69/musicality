@@ -40,7 +40,7 @@ export const authSlice = createSlice({
         state.status = "loading";
       })
       .addCase(registerAsync.fulfilled, (state, action) => {
-        addTokenToStorage(action.payload.token);
+        addTokenToStorage(action.payload?.token);
         state.isLoggedIn = true;
         state.status = "success";
       })
@@ -51,7 +51,7 @@ export const authSlice = createSlice({
         state.status = "loading";
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
-        addTokenToStorage(action.payload.token);
+        addTokenToStorage(action.payload?.token);
         state.isLoggedIn = true;
         state.status = "success";
       })
