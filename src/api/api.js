@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "https://musicality-backend.herokuapp.com",
-  baseURL: "http://localhost:5000",
+   baseURL: "https://musicality-backend.herokuapp.com",
+  //baseURL: "http://localhost:5000",
 });
 
 const config = () => {
