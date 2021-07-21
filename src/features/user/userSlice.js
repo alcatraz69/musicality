@@ -53,11 +53,11 @@ export const userSlice = createSlice({
       })
       .addCase(updateUserAsync.fulfilled, (state, action) => {
         if (action.meta) {
-          const { profilePicture, city, interest, about, from } =
+          const { profilePicture, city, interests, about, from } =
             action.meta.arg;
           state.userDetails.profilePicture = profilePicture;
           state.userDetails.city = city;
-          state.userDetails.interest = interest;
+          state.userDetails.interests = interests;
           state.userDetails.about = about;
           state.userDetails.from = from;
           state.status = "success";

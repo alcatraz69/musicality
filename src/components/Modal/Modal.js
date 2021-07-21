@@ -32,7 +32,7 @@ const Modal = ({ show, setShow }) => {
       };
       finalUpload();
     }
-  }, [imgUrl, about, city, interest, from, dispatch]);
+  }, [imgUrl, about, city, interests, from, dispatch]);
 
   const submitPost = async (e) => {
     e.preventDefault();
