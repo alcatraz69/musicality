@@ -1,0 +1,19 @@
+.registerBox {
+  height: 400px;
+  width: 70%;
+  padding: 20px;
+  margin-left: 50px;
+  background-color: #17103f61;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 578px) {
+  .registerBox {
+    width: 95%;
+
+    margin-left: -12px;
+  }
+}

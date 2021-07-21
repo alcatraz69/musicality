@@ -1,0 +1,86 @@
+.createPostContainer {
+  width: 100%;
+  /* height: 155px; */
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.userIcon {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.createPostTop {
+  display: flex;
+  align-items: center;
+  margin: 0 20px 20px 20px;
+  padding-top: 20px;
+}
+
+.createPostInput {
+  border: none;
+  width: 80%;
+}
+
+.createPostInput:focus {
+  outline: none;
+}
+
+.createPostHr {
+  margin: 20px;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, #ccc, #333, #ccc);
+}
+
+.createPostBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0 20px;
+  padding-bottom: 12px;
+}
+
+.createPostOption {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+#file {
+  display: none;
+}
+.shareIcon {
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.postBtn {
+  padding: 5px 15px;
+  background-color: #1877f2;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.postImgContainer {
+  padding: 15px;
+  position: relative;
+}
+
+.postImgDisplay {
+  width: 100%;
+  object-fit: cover;
+}
+
+.postImgCancel {
+  position: absolute;
+  top: -2px;
+  right: 16px;
+  cursor: pointer;
+}

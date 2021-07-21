@@ -1,0 +1,157 @@
+.rightbar {
+  flex: 3.5;
+  padding: 24px 30px;
+}
+
+.birthdayContainer {
+  padding: 20px 20px 0 0;
+  display: flex;
+  align-items: center;
+}
+
+.bdayImg {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.bdayText {
+  font-size: 15px;
+  font-weight: 300;
+}
+
+.sponserContainer {
+  text-decoration: none;
+  color: black;
+  background-color: #fff;
+  padding: 30px 30px 10px 30px;
+  display: block;
+  border-radius: 10px;
+  margin-top: 30px;
+  width: 70%;
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.sponserImg {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.sponserTxtContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sponserLink {
+  margin: 2px 10px;
+  color: grey;
+  font-size: 13px;
+}
+
+.friendlistTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.friendsTitle {
+  margin: 20px 0;
+}
+
+.friendList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.friendItem {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.friendProfileImgContainer {
+  margin-right: 10px;
+  position: relative;
+}
+
+.onlineStatus {
+  width: 12px;
+  height: 12px;
+  background-color: limegreen;
+  border-radius: 50%;
+  position: absolute;
+  top: -2;
+  right: 0;
+  border: 2px solid white;
+}
+
+.friendUserName {
+  font-size: 15px;
+}
+
+.rightbarTitle {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.rightbarInfo {
+  margin-bottom: 30px;
+}
+
+.rightbarInfoItem {
+  margin-bottom: 10px;
+}
+
+.rightbarInfoKey {
+  font-weight: 500;
+  margin-right: 15px;
+  color: #555;
+}
+
+.rightbarInfoValue {
+  font-weight: 300;
+}
+
+.rightbarFollowings {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1fr);
+}
+
+.rightbarFollowing {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.rightbarFollowingImg {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+/* .rightbarFollowingName {
+  text-align: center;
+} */
+.followBtn {
+  margin: 20px 0;
+  padding: 5px 15px;
+  border: none;
+  background-color: #1872f2;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 578px) {
+  .rightbar {
+    display: none;
+  }
+}

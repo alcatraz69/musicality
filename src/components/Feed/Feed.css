@@ -1,0 +1,23 @@
+.feed {
+  flex: 5.5;
+  padding: 24px 30px;
+}
+
+.noPostTxt {
+  margin: 50px 0;
+  padding: 0 30px;
+  height: 215px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: xx-large;
+  font-weight: 800;
+  color: #c7c7c7;
+}
+
+@media screen and (max-width: 578px) {
+  .feed {
+    padding: 24px 0;
+  }
+}

@@ -1,0 +1,115 @@
+.navbarContainer {
+  height: 55px;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: 0 4px 12px 0 rgb(0 0 0 / 5%);
+}
+
+.navbarLeft {
+  flex: 3;
+}
+
+.logo {
+  font-size: 22px;
+  margin-left: 20px;
+  font-weight: 600;
+  color: rgb(16, 9, 75);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.navbarCenter {
+  flex: 5;
+}
+
+.searchBar {
+  width: 60%;
+  height: 38px;
+  background-color: #f0f2f5;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.searchIcon {
+  font-size: 20px;
+  margin: 0 10px;
+}
+
+.searchInput {
+  border: none;
+  width: 70%;
+  background-color: #f0f2f5;
+  font-size: 15px;
+}
+
+.searchInput:focus {
+  outline: none;
+}
+
+.navbarRight {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.rightIcon {
+  color: rgb(211, 211, 211);
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.rightIcon:hover {
+  color: #1877f2;
+}
+
+.navbarIconItem {
+  position: relative;
+}
+
+.iconBadge {
+  width: 15px;
+  height: 15px;
+  background-color: #f02849;
+  border-radius: 50%;
+  color: #fff;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -5px;
+  right: -7px;
+  font-size: 11px;
+}
+
+.userImage {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  object-fit: cover;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 578px) {
+  .rightIcon {
+    display: none;
+  }
+  .iconBadge {
+    display: none;
+  }
+  .searchBar {
+    display: none;
+  }
+
+  .logo {
+    font-size: 20px;
+    margin-left: 8px;
+  }
+}
