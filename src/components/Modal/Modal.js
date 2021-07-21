@@ -13,7 +13,7 @@ const Modal = ({ show, setShow }) => {
   const [about, setAbout] = useState(userDetails?.about);
   const [city, setCity] = useState(userDetails?.city);
   const [from, setFrom] = useState(userDetails?.from);
-  const [interest, setInterest] = useState(userDetails?.interests);
+  const [interests, setInterest] = useState(userDetails?.interests);
   const [file, setFile] = useState(null);
   const [imgUrl, setImgUrl] = useState("");
 
@@ -25,7 +25,7 @@ const Modal = ({ show, setShow }) => {
             about,
             city,
             from,
-            interest,
+            interests,
             profilePicture: imgUrl,
           })
         );
@@ -93,7 +93,7 @@ const Modal = ({ show, setShow }) => {
             <input
               type="text"
               placeholder="What are your Interests"
-              value={interest}
+              value={interests}
               onChange={(e) => setInterest(e.target.value)}
             />
           </div>
