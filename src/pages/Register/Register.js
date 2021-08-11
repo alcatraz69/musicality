@@ -3,8 +3,12 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { registerAsync } from "../../features/auth/auth.service";
 import { useHistory, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { selectAuth } from "../../features/auth/authSlice";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const Register = () => {
+  const { status } = useSelector(selectAuth);
   const history = useHistory();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({
@@ -89,8 +93,16 @@ const Register = () => {
               value={userData.cpassword}
               onChange={handleChange}
             />
-            <button type="submit" className="loginButton">
-              Sign Up
+            <button
+              disabled={status === "loading"}
+              type="submit"
+              className="loginButton"
+            >
+              {status === "loading" ? (
+                <ScaleLoader height={16} width={3} color="white" />
+              ) : (
+                "Sign Up"
+              )}
             </button>
             <span className="loginForgot">Already on Musicality?</span>
             <Link to="/login" className="linkStyle">

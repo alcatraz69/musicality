@@ -2,9 +2,13 @@ import "./Login.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginAsync } from "../../features/auth/auth.service";
+import { selectAuth } from "../../features/auth/authSlice";
 import { useHistory, Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+import ScaleLoader from "react-spinners/ScaleLoader";
 
 const Login = () => {
+  const { status } = useSelector(selectAuth);
   const history = useHistory();
   const dispatch = useDispatch();
   const [userData, setUserData] = useState({
@@ -27,15 +31,17 @@ const Login = () => {
           password,
         })
       );
-      history.push("/");
-
-      if (user.status === 200) {
+      if (user.payload?.msg === "logged in") {
         console.log("login success");
+        history.push("/");
+      } else if (user.payload === undefined) {
+        console.log("login error");
       }
     } catch (err) {
       console.log(err);
     }
   };
+
   return (
     <div className="login">
       <div className="loginWrapper">
@@ -67,8 +73,16 @@ const Login = () => {
               value={userData.password}
               onChange={handleChange}
             />
-            <button type="submit" className="loginButton">
-              Log In
+            <button
+              disabled={status === "loading"}
+              type="submit"
+              className="loginButton"
+            >
+              {status === "loading" ? (
+                <ScaleLoader height={16} width={3} color="white" />
+              ) : (
+                "Log In"
+              )}
             </button>
             <span className="loginForgot">New to Musicality?</span>
             <Link
