@@ -5,10 +5,11 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { selectPost } from "../../features/post/postSlice";
 import { useParams } from "react-router";
+import PuffLoader from "react-spinners/PuffLoader";
 
 const Feed = ({ posts }) => {
   const { id } = useParams();
-  const { timeline } = useSelector(selectPost);
+  const { timeline, status } = useSelector(selectPost);
   const [state, setstate] = useState(posts);
   useEffect(() => {
     if (posts) {
@@ -21,6 +22,13 @@ const Feed = ({ posts }) => {
   return (
     <div className="feed">
       {!id && <CreatePost />}
+      {status === "posts-loading" && (
+        <div className="loaderContainer">
+          <PuffLoader />
+          <p style={{ marginTop: "15px", marginLeft: "15px" }}> Loading...</p>
+        </div>
+      )}
+
       {state?.length > 0 ? (
         state?.map((item) => {
           return <Post key={item?._id} post={item} />;

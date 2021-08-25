@@ -16,6 +16,20 @@
   color: #c7c7c7;
 }
 
+.loaderContainer {
+  /* width: 200px; */
+  height: 160px;
+  /* background-color: #fff; */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  /* padding: 20px 0; */
+  /* box-shadow: rgb(99 99 99 / 20%) 0px 2px 8px 0px;*/
+}
+
 @media screen and (max-width: 578px) {
   .feed {
     padding: 24px 0;
