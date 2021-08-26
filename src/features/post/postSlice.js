@@ -55,7 +55,7 @@ export const postSlice = createSlice({
         state.status = "failed";
       })
       .addCase(likePostAsync.pending, (state) => {
-        state.status = "posts-loading";
+        state.status = "likes-loading";
       })
       .addCase(likePostAsync.fulfilled, (state, action) => {
         state.status = "success";

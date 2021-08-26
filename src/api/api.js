@@ -1,8 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-   baseURL: "https://musicality-backend.herokuapp.com",
-  //baseURL: "http://localhost:5000",
+  baseURL: "https://musicality-backend.herokuapp.com",
+  // baseURL: "http://localhost:5000",
 });
 
 const config = () => {
@@ -57,3 +57,6 @@ export const deletePost = (id) =>
 
 export const updateUser = (data) =>
   API.put("/user/updateuser", { data }, config());
+
+export const searchUser = (username) =>
+  API.post("/user/searchUser", { username });
