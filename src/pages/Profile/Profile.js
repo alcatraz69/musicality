@@ -69,7 +69,7 @@ const Profile = () => {
               />
               {!id && (
                 <div className="profilePicEdit" onClick={() => setShow(!show)}>
-                  <span>edit</span>
+                  <span>Edit</span>
                 </div>
               )}
             </div>

@@ -55,6 +55,7 @@
 
 .profilePic:hover + .profilePicEdit {
   display: flex;
+  background-color: rgba(207, 207, 207, 0.562);
 }
 
 .profileInfo {

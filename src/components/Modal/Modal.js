@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { updateUserAsync } from "../../features/user/user.service";
 import { useSelector } from "react-redux";
 import { selectUser } from "../../features/user/userSlice";
+import { FcAddImage } from "react-icons/fc";
 
 const Modal = ({ show, setShow }) => {
   const { userDetails } = useSelector(selectUser);
@@ -120,7 +121,9 @@ const Modal = ({ show, setShow }) => {
           </div>
         </div>
         <div className="modal-top">
-          <label htmlFor="profilePic"> Upload profile Picture</label>
+          <label htmlFor="profilePic" style={{ cursor: "pointer" }}>
+            {<FcAddImage />} Upload profile Picture
+          </label>
           <button className="updateBtn" type="submit">
             Update
           </button>

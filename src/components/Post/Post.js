@@ -68,7 +68,7 @@ const Post = ({ post }) => {
           <span className="postLikes">{post.likes.length} likes</span>
         </div>
         <div className="postBottomRight">
-          <span className="postCommentText">5 comments</span>
+          <span className="postCommentText"></span>
         </div>
       </div>
     </div>
